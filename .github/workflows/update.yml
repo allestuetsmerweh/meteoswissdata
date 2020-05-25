@@ -1,0 +1,24 @@
+on:
+  schedule:
+    # every 3 minutes
+    - cron:  '*/3 * * * *'
+name: Scheduled
+jobs:
+  fetch:
+    name: Update data
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: git branch -D data || exit 0
+    - run: git checkout --orphan data
+    - run: git rm --cached -r .
+    - run: wget -O raw_station_measurements.csv https://data.geo.admin.ch/ch.meteoschweiz.messwerte-aktuell/VQHA80.csv
+    - run: python3 transform.py
+    - run: git config user.email "ci-build@hatt.style"
+    - run: git config user.name "ci-build"
+    - run: git remote set-url --push origin https://allestuetsmerweh:$GITHUB_TOKEN@github.com/allestuetsmerweh/meteoswissdata
+    - run: git add raw_station_measurements.csv
+    - run: git add station_measurements.json
+    - run: git add DATA_LICENSE.txt
+    - run: git commit -m 'Data update'
+    - run: git push -f --set-upstream origin data
