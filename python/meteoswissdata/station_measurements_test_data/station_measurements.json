@@ -1,0 +1,25 @@
+{
+  "ABC": {
+    "time": "2020-06-15T20:40:00",
+    "tre200s0": 8.8,
+    "rre150z0": 0.1,
+    "sre000z0": 0.0,
+    "gre000z0": 2.0,
+    "ure200s0": 96.0,
+    "tde200s0": 8.2,
+    "dkl010z0": 179.0,
+    "fu3010z0": 4.3,
+    "fu3010z1": 9.0,
+    "prestas0": 871.6,
+    "pp0qffs0": null,
+    "pp0qnhs0": 1022.2,
+    "ppz850s0": 1534.1,
+    "ppz700s0": null,
+    "dv1towz0": null,
+    "fu3towz0": null,
+    "fu3towz1": null,
+    "ta1tows0": null,
+    "uretows0": null,
+    "tdetows0": null
+  }
+}

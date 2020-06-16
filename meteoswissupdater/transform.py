@@ -24,15 +24,17 @@ def transform():
 def transform_into_single_json():
     with open('raw_station_measurements.csv') as csvfile:
         csvreader = get_csvreader(csvfile)
+        stations_data = {
+            station_data['stn']: transform_station_data(station_data)
+            for station_data in csvreader
+        }
+        with open('stations_list.json', 'w+') as jsonfile:
+            json.dump([
+                station_ident
+                for station_ident in stations_data.keys()
+            ], jsonfile, indent=2)
         with open('station_measurements.json', 'w+') as jsonfile:
-            json.dump(
-                {
-                    station_data['stn']: transform_station_data(station_data)
-                    for station_data in csvreader
-                },
-                jsonfile,
-                indent=2,
-            )
+            json.dump(stations_data, jsonfile, indent=2)
 
 
 def transform_into_station_jsons():
