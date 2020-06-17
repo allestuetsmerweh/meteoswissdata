@@ -6,7 +6,6 @@ name: CD
 jobs:
   publish:
     name: Publish
-    needs: fetch
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
