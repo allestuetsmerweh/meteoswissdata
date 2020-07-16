@@ -1,0 +1,12 @@
+#on:
+#  schedule:
+#    # every 3 minutes
+#    - cron:  '*/3 * * * *'
+#name: Scheduled
+#jobs:
+#  fetch:
+#    name: Update data
+#    runs-on: ubuntu-latest
+#    steps:
+#    - uses: actions/checkout@v2
+#    - run: python3 -m meteoswissupdater
